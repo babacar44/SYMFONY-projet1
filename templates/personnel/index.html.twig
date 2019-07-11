@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonnelController!{% endblock %}
+
+{% block body %}
+    {% if personnes %}
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Personne</th>
+<th>Matricule</th>
+<th>Date Naissance</th>
+<th>Salaire</th>
+<th>Show</th>
+<th>Edit</th>
+<th>Delete</th>
+
+</tr>
+</thead>
+<tbody>
+{% for personne in personnes %}
+    <tr>
+    <td>{{ personne.nomComplet }}</td>
+    <td>{{ personne.matricule }}</td>
+    <td>{{ personne.dateNaissance|date('Y-m-d') }}</td>
+    <td>{{ personne.salaire }}</td>
+    <td><a href="/personnel/{{ personne.id}}" class="btn btn-dark">Show</a></td>
+    <td><a href="/personnel/{{ personne.id}}" class="btn btn-dark">Edit</a></td>
+    <td><a href="/personnel/{{ personne.id}}" class="btn btn-dark">Delete</a></td>
+    </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+    {% else %}
+    <p>No Personne to display </p>
+    {% endif %}
+{% endblock %}

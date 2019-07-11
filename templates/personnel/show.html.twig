@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonnelController!{% endblock %}
+
+{% block body %}
+    <h1>{{ personne.nomComplet }}</h1>
+    <p>{{ personne.matricule }}</p>
+    <p>{{ personne.dateNaissance|date('Y-m-d') }}</p>
+    <p>{{ personne.salaire }}</p>
+   <hr>
+   <a href="/">Go Back</a>
+
+{% endblock %}
