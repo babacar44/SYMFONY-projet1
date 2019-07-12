@@ -16,11 +16,13 @@ class PersonnelFixtures extends Fixture
             $personne->setMatricule("mat45");
             $personne->setDateNaissance(new \DateTime());
             $personne->setSalaire(500000);
-
+          
             $manager->persist($personne);
         }
 
         $manager->flush();
     }
+
+     
     
 }

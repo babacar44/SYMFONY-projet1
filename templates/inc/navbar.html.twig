@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
 <div class="container">
-<a href="\" class="navbar-brand">Personnel</a>
+<a href="\" class="navbar-brand">Accueil</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
 <span class="navbar-toggle-icon"></span>
 </button>
@@ -8,11 +8,11 @@
 <div class="collapse navbar-collapse" id="mobile-nav">
 <ul class="navbar-nav m1-auto">
 <li class="nav-item">
-<a href="/" class="nav-link">Home</a>
+<a href="{{ path('personnel_list') }}" class="nav-link">Lister</a>
 </li>
 
 <li class="nav-item">
-<a href="/personnel/new" class="nav-link">New Person</a>
+<a href="{{ path('ajout_personne') }}" class="nav-link">Ajouter Employé</a>
 </li>
 
 </ul>

@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% form_theme formPersonnel 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+
+<h1>Ajout d'une Personne</h1>
+{{ form_start(formPersonnel) }}
+
+ {{ form_row(formPersonnel.nomComplet, {'attr': {'placeholder': "Nom Complet"}}) }}
+ {{ form_row(formPersonnel.matricule, {'attr': {'placeholder': "matric ule"}}) }}
+ {{ form_row(formPersonnel.dateNaissance, {'attr': {'placeholder': "date Naissance"}}) }}
+ {{ form_row(formPersonnel.salaire, {'attr': {'placeholder': "salaire"}}) }}
+ {{ form_row(formPersonnel.category, {'attr': {'placeholder': "category"}}) }}
+
+ <button type="submit"class="btn btn-success" >
+     {% if editMode %}
+
+        Save
+        {% else %}
+         
+    Ajouter
+    {% endif %}
+</button>
+    
+ {{ form_end(formPersonnel) }}
+{% endblock  %}   
