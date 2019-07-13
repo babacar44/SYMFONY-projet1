@@ -80,8 +80,10 @@ class PersonnelController extends AbstractController
 
                 $manager->remove($personnes);
                 $manager->flush();
+                
+                return $this->redirectToRoute('personnel_list', ['id' => $personnes->getId()]);
 
-                return new Response('Employe supprimé');
+                // return new Response('Employe supprimé');
             }
                 /**
                  * @Route("/", name="show")
