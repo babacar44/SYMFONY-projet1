@@ -24,7 +24,7 @@ class CategoryService
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\personnel", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Personnel", mappedBy="category")
      */
     private $employees;
 

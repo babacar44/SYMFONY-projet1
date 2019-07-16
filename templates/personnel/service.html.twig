@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% form_theme formService 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+
+<h1>Ajout d'une Personne</h1>
+{{ form_start(formService) }}
+
+
+ {{ form_row(formService.description, {'attr': {'placeholder': "service"}}) }}
+
+ <button type="submit"class="btn btn-success" >
+     {% if editMode %}
+
+        Save
+        {% else %}
+         
+    Ajouter
+    {% endif %}
+</button>
+    
+ {{ form_end(formService) }}
+{% endblock  %}   

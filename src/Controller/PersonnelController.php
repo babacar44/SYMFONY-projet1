@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\CategoryService;
 use Symfony\Component\HttpFoundation\Response;
+use phpDocumentor\Reflection\Types\This;
+
+
 class PersonnelController extends AbstractController
 {
     /**
@@ -68,6 +71,48 @@ class PersonnelController extends AbstractController
             ]);
 } 
             /**
+             * @Route("/personnel/service", name="service_list")
+             * @Route("/personnel/{id}/modifier", name="edit_service")
+             */
+
+            public function job(CategoryService $services=null, Request $request, ObjectManager $manager){
+                if (!$services) {
+                   $services = new CategoryService();
+                }
+
+                $form = $this->createFormBuilder($services);
+                        $form->add('description');
+                $form=$form->getForm();
+                
+                $form->handleRequest($request);
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    $manager->persist($services);
+                    $manager->flush();
+
+                    return $this->redirectToRoute('/personnel/listservice.html.twig', ['id' => $services->getId()]);
+                }
+
+                return $this->render('personnel/service.html.twig', [
+                    'formService' => $form->createView(),
+                    'editMode' => $services->getId() !== null
+                ]);
+            }
+
+                 /**
+                 * @Route("/personnel/listservice", name="service_list")
+                 * @Method({"GET"})
+                 */
+                public function indexService()
+                {
+
+                    $services= $this->getDoctrine()->getRepository(CategoryService::class)->findAll();
+                    return $this->render('personnel/listservice.html.twig', [
+                        'services' => $services,
+                    ]);
+                }
+
+            /**
              * @Route("/personnel/delete/{id}", name="employe_delete")
              * 
              * @return Response
@@ -83,7 +128,6 @@ class PersonnelController extends AbstractController
                 
                 return $this->redirectToRoute('personnel_list', ['id' => $personnes->getId()]);
 
-                // return new Response('Employe supprimé');
             }
                 /**
                  * @Route("/", name="show")
